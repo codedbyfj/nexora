@@ -20,7 +20,7 @@ class PageBuilderController extends Controller
         $layout = $this->pageLayoutRepository->findOneWhere([
             'page_slug'  => $page_slug,
             'channel_id' => core()->getCurrentChannel()->id,
-            'locale'     => core()->getCurrentLocaleCode(),
+            'locale'     => core()->getCurrentLocale()->code,
         ]);
 
         return view('nexora::admin.builder', [
@@ -34,13 +34,13 @@ class PageBuilderController extends Controller
         $layout = $this->pageLayoutRepository->updateOrCreate([
             'page_slug'  => $request->page_slug,
             'channel_id' => core()->getCurrentChannel()->id,
-            'locale'     => core()->getCurrentLocaleCode(),
+            'locale'     => core()->getCurrentLocale()->code,
         ], [
             'layout_json' => $request->layout_json,
             'is_active'   => true,
         ]);
 
-        Cache::forget("nexora_page_{$request->page_slug}_" . core()->getCurrentChannelCode() . "_" . core()->getCurrentLocaleCode());
+        Cache::forget("nexora_page_{$request->page_slug}_" . core()->getCurrentChannel()->code . "_" . core()->getCurrentLocale()->code);
 
         return response()->json([
             'message' => 'Layout saved successfully.',

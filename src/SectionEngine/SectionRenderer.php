@@ -54,6 +54,6 @@ class SectionRenderer
 
     protected function getCacheKey(string $type, array $data): string
     {
-        return 'nexora_section_' . $type . '_' . md5(json_encode($data) . core()->getCurrentChannelCode() . core()->getCurrentLocaleCode());
+        return 'nexora_section_' . $type . '_' . md5(json_encode($data) . core()->getCurrentChannel()->code . core()->getCurrentLocale()->code);
     }
 }

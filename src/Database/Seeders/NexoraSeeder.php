@@ -13,7 +13,7 @@ class NexoraSeeder extends Seeder
      */
     public function run()
     {
-        $channel = app(\Webkul\Core\Repositories\ChannelRepository::class)->findOneByField('code', core()->getCurrentChannelCode() ?: 'default');
+        $channel = app(\Webkul\Core\Repositories\ChannelRepository::class)->findOneByField('code', core()->getCurrentChannel()->code ?: 'default');
         $locales = app(\Webkul\Core\Repositories\LocaleRepository::class)->all();
 
         foreach ($locales as $locale) {

@@ -16,8 +16,8 @@ class HomepageController extends Controller
 
     public function index()
     {
-        $channelCode = core()->getCurrentChannelCode();
-        $localeCode = core()->getCurrentLocaleCode();
+        $channelCode = core()->getCurrentChannel()->code;
+        $localeCode = core()->getCurrentLocale()->code;
         $cacheKey = "nexora_page_home_{$channelCode}_{$localeCode}";
 
         $html = Cache::remember($cacheKey, config('nexora.cache.ttl'), function () use ($localeCode) {
