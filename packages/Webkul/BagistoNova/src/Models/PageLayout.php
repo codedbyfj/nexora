@@ -4,7 +4,9 @@ namespace Webkul\BagistoNova\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PageLayout extends Model
+use Webkul\BagistoNova\Contracts\PageLayout as PageLayoutContract;
+
+class PageLayout extends Model implements PageLayoutContract
 {
     protected $table = 'page_layouts';
 

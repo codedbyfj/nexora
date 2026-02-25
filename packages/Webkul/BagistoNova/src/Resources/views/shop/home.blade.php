@@ -11,21 +11,5 @@
 @endsection
 
 @push('styles')
-    <style>
-        .nova-frontend .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('vendor/webkul/bagisto-nova/css/nova.css') }}">
 @endpush

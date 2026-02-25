@@ -13,7 +13,23 @@ class BagistoNovaServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/Config/config.php', 'bagisto-nova'
+            dirname(__DIR__) . '/Config/config.php',
+            'bagisto-nova'
+        );
+
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/menu.php',
+            'menu.admin'
+        );
+
+        $this->mergeConfigFrom(
+            dirname(__DIR__) . '/Config/acl.php',
+            'acl'
+        );
+
+        $this->app->concord->registerModel(
+            \Webkul\BagistoNova\Contracts\PageLayout::class,
+            \Webkul\BagistoNova\Models\PageLayout::class
         );
     }
 
@@ -26,7 +42,7 @@ class BagistoNovaServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/../Routes/admin.php');
 
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'nova');
-        
+
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
 
         $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'nova');

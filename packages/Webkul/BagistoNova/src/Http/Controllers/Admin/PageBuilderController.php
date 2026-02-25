@@ -3,22 +3,34 @@
 namespace Webkul\BagistoNova\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Webkul\BagistoNova\Http\Requests\PageLayoutRequest;
 use Illuminate\Routing\Controller;
-use Webkul\BagistoNova\Models\PageLayout;
+use Webkul\BagistoNova\Repositories\PageLayoutRepository;
 use Webkul\BagistoNova\SectionEngine\SectionRegistry;
 use Illuminate\Support\Facades\Cache;
 
 class PageBuilderController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @param  \Webkul\BagistoNova\Repositories\PageLayoutRepository  $pageLayoutRepository
+     * @return void
+     */
+    public function __construct(
+        protected PageLayoutRepository $pageLayoutRepository
+    ) {}
+
+    /**
      * Display the builder interface.
      */
     public function index($page_slug = 'home')
     {
-        $layout = PageLayout::where('page_slug', $page_slug)
-            ->where('channel_id', core()->getCurrentChannel()->id)
-            ->where('locale', core()->getCurrentLocaleCode())
-            ->first();
+        $layout = $this->pageLayoutRepository->findOneWhere([
+            'page_slug'  => $page_slug,
+            'channel_id' => core()->getCurrentChannel()->id,
+            'locale'     => core()->getCurrentLocaleCode(),
+        ]);
 
         return view('nova::admin.builder', [
             'layout'    => $layout,
@@ -29,14 +41,9 @@ class PageBuilderController extends Controller
     /**
      * Save the layout data.
      */
-    public function save(Request $request)
+    public function save(PageLayoutRequest $request)
     {
-        $request->validate([
-            'page_slug'   => 'required|string',
-            'layout_json' => 'required|array',
-        ]);
-
-        $layout = PageLayout::updateOrCreate([
+        $layout = $this->pageLayoutRepository->updateOrCreate([
             'page_slug'  => $request->page_slug,
             'channel_id' => core()->getCurrentChannel()->id,
             'locale'     => core()->getCurrentLocaleCode(),

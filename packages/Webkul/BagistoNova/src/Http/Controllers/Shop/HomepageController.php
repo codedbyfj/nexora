@@ -3,13 +3,14 @@
 namespace Webkul\BagistoNova\Http\Controllers\Shop;
 
 use Illuminate\Routing\Controller;
-use Webkul\BagistoNova\Models\PageLayout;
+use Webkul\BagistoNova\Repositories\PageLayoutRepository;
 use Webkul\BagistoNova\SectionEngine\SectionRenderer;
 use Illuminate\Support\Facades\Cache;
 
 class HomepageController extends Controller
 {
     public function __construct(
+        protected PageLayoutRepository $pageLayoutRepository,
         protected SectionRenderer $sectionRenderer
     ) {}
 
@@ -22,12 +23,13 @@ class HomepageController extends Controller
         $localeCode = core()->getCurrentLocaleCode();
         $cacheKey = "nova_page_home_{$channelCode}_{$localeCode}";
 
-        $html = Cache::remember($cacheKey, config('bagisto-nova.cache.ttl'), function () use ($channelCode, $localeCode) {
-            $layout = PageLayout::where('page_slug', 'home')
-                ->where('channel_id', core()->getCurrentChannel()->id)
-                ->where('locale', $localeCode)
-                ->where('is_active', true)
-                ->first();
+        $html = Cache::remember($cacheKey, config('bagisto-nova.cache.ttl'), function () use ($localeCode) {
+            $layout = $this->pageLayoutRepository->findOneWhere([
+                'page_slug'  => 'home',
+                'channel_id' => core()->getCurrentChannel()->id,
+                'locale'     => $localeCode,
+                'is_active'  => 1,
+            ]);
 
             if (!$layout) {
                 return null;
