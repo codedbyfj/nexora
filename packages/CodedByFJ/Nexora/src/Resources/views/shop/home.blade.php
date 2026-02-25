@@ -11,5 +11,5 @@
 @endsection
 
 @push('styles')
-    <link rel="stylesheet" href="{{ asset('vendor/codedbyfj/nexora/css/nova.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/codedbyfj/nexora/css/nexora.css') }}">
 @endpush

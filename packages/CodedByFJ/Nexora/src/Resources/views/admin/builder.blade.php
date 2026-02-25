@@ -13,5 +13,5 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('vendor/codedbyfj/nexora/js/admin-builder.js') }}"></script>
+    <script src="{{ asset('vendor/codedbyfj/nexora/js/nexora-builder.js') }}"></script>
 @endpush
