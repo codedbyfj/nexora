@@ -18,6 +18,15 @@
       "CodedByFJ\\Nexora\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "CodedByFJ\\Nexora\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^9.0|^10.0",
+    "phpunit/phpunit": "^10.0"
+  },
   "extra": {
     "laravel": {
       "providers": [

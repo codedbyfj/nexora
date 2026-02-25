@@ -15,17 +15,22 @@ Nexora is a premium Bagisto package designed for rapid storefront development us
    ```json
    "repositories": [
        {
-           "type": "path",
-           "url": "packages/CodedByFJ/Nexora"
+           "type": "vcs",
+           "url": "https://github.com/codedbyfj/nexora"
        }
    ],
    "require": {
-       "codedbyfj/nexora": "@dev"
+       "codedbyfj/nexora": "dev-main"
    }
    ```
 3. Run `composer update`.
-4. Run migrations: `php artisan migrate`.
-5. Publish assets: `php artisan vendor:publish --tag=nexora-assets`.
+4. Run the installer: `php artisan nexora:install`.
+
+## 🛠️ Frontend Development (Optional for Developers)
+If you wish to modify the Vue components or CSS:
+1. Navigate to the package directory: `cd packages/CodedByFJ/Nexora`.
+2. Install dependencies: `npm install`.
+3. Build assets: `npm run build`.
 
 ## 🛠️ Components
 - Hero Section

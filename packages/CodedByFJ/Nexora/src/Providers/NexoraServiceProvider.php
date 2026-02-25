@@ -57,7 +57,17 @@ class NexoraServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../Resources/assets' => public_path('vendor/codedbyfj/nexora'),
+        ], 'nexora-assets-src');
+
+        $this->publishes([
+            __DIR__ . '/../Resources/assets/dist' => public_path('vendor/codedbyfj/nexora'),
         ], 'nexora-assets');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \CodedByFJ\Nexora\Console\Commands\InstallCommand::class,
+            ]);
+        }
 
         // Prepend namespace for shop theme overrides
         $this->app->booted(function () {
