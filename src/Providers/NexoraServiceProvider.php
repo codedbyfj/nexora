@@ -31,10 +31,12 @@ class NexoraServiceProvider extends ServiceProvider
             'core'
         );
 
-        $this->app->concord->registerModel(
-            \CodedByFJ\Nexora\Contracts\PageLayout::class,
-            \CodedByFJ\Nexora\Models\PageLayout::class
-        );
+        if ($this->app->bound('concord')) {
+            $this->app->concord->registerModel(
+                \CodedByFJ\Nexora\Contracts\PageLayout::class,
+                \CodedByFJ\Nexora\Models\PageLayout::class
+            );
+        }
     }
 
     /**
