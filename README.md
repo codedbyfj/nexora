@@ -40,7 +40,7 @@ If you wish to modify the Vue components or CSS:
 - Custom HTML Section
 
 ## 📜 Authors
-- **CodedByFJ** - *Initial Work*
+- **CodedByFJ** - [GitHub](https://github.com/codedbyfj)
 
 ## ⚖️ License
-Proprietary - All rights reserved.
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
