@@ -9,7 +9,6 @@ export default defineConfig({
         "src/Resources/assets/css/nexora.css",
         "src/Resources/assets/js/nexora-builder.js",
       ],
-      publicDirectory: "../../public",
       refresh: true,
     }),
     vue({

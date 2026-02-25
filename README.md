@@ -10,8 +10,7 @@ Nexora is a premium Bagisto package designed for rapid storefront development us
 - **Safe Overrides**: Prepend theme namespaces without modifying core files.
 
 ## 📦 Installation
-1. Clone the repository into your Bagisto project's root.
-2. Add the package to your root `composer.json`:
+1. Add the package to your Bagisto root `composer.json`:
    ```json
    "repositories": [
        {
@@ -23,8 +22,8 @@ Nexora is a premium Bagisto package designed for rapid storefront development us
        "codedbyfj/nexora": "dev-main"
    }
    ```
-3. Run `composer update`.
-4. Run the installer: `php artisan nexora:install`.
+2. Run `composer update`.
+3. Run the installer: `php artisan nexora:install`.
 
 ## 🛠️ Frontend Development (Optional for Developers)
 If you wish to modify the Vue components or CSS:
