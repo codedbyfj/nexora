@@ -1,0 +1,15 @@
+/node_modules
+/vendor
+.env
+.idea
+.vscode
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+storage/*.key
+/public/storage
+/public/hot
+/public/build
+/public/vendor/codedbyfj/nexora
