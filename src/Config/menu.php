@@ -3,16 +3,18 @@
 return [
     [
         'key'        => 'nexora',
-        'name'       => 'Nexora Builder',
+        'name'       => 'nexora::app.admin.menu.nexora-builder',
         'route'      => 'admin.nexora.builder.index',
         'sort'       => 2,
-        'icon-class' => 'temp-icon',
+        'icon'       => 'cms-icon',
+        'icon-class' => 'cms-icon',
     ],
     [
         'key'        => 'nexora.builder',
-        'name'       => 'Page Builder',
+        'name'       => 'nexora::app.admin.menu.page-builder',
         'route'      => 'admin.nexora.builder.index',
         'sort'       => 1,
+        'icon'       => '',
         'icon-class' => '',
     ]
 ];

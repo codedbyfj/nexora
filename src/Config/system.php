@@ -3,22 +3,22 @@
 return [
     [
         'key'    => 'nexora',
-        'name'   => 'Nexora Settings',
+        'name'   => 'nexora::app.admin.system.nexora',
         'sort'   => 1,
     ],
     [
         'key'    => 'nexora.settings',
-        'name'   => 'General',
+        'name'   => 'nexora::app.admin.system.settings',
         'sort'   => 1,
     ],
     [
         'key'    => 'nexora.settings.general',
-        'name'   => 'Nexora Configuration',
+        'name'   => 'nexora::app.admin.system.configuration',
         'sort'   => 1,
         'fields' => [
             [
                 'name'          => 'license_key',
-                'title'         => 'License Key',
+                'title'         => 'nexora::app.admin.system.license-key',
                 'type'          => 'text',
                 'validation'    => 'required',
                 'channel_based' => true,
@@ -26,7 +26,7 @@ return [
             ],
             [
                 'name'          => 'cache_enabled',
-                'title'         => 'Enable Caching',
+                'title'         => 'nexora::app.admin.system.cache-enabled',
                 'type'          => 'boolean',
                 'channel_based' => true,
                 'locale_based'  => false,

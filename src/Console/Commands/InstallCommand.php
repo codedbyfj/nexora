@@ -45,7 +45,15 @@ class InstallCommand extends Command
         ]);
         $this->comment('Config published.');
 
-        $this->success('Nexora installed successfully. Happy building!');
+        if ($this->confirm('Do you want to seed default Nexora content?', true)) {
+            $this->info('4. Seeding default data...');
+            Artisan::call('db:seed', [
+                '--class' => \CodedByFJ\Nexora\Database\Seeders\NexoraSeeder::class
+            ]);
+            $this->comment('Seeding completed.');
+        }
+
+        $this->success('Nexora is ready to go! Visit the admin panel to start building.');
     }
 
     protected function success($message)
